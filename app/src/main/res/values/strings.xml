@@ -20,4 +20,5 @@
 
     <!-- draw view -->
     <string name="change_background_color_btn">Change color</string>
+    <string name="about_btn">About</string>
 </resources>

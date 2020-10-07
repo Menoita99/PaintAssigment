@@ -1,6 +1,7 @@
 package com.example.paint;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -32,5 +33,10 @@ public class DrawActivity extends Activity {
         cp.enableAutoClose();
         cp.setCallback(this::setBackgroundColor);
         cp.show();
+    }
+
+    public void aboutClicked(View v){
+        Intent i = new Intent(this, AboutActivity.class);
+        startActivity(i);
     }
 }
