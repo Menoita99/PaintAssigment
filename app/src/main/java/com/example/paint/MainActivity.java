@@ -20,5 +20,6 @@ public class MainActivity extends Activity {
                 startActivity(i);
                 MainActivity.this.finish();
             },TIME_TO_WELCOME);
+
     }
 }
