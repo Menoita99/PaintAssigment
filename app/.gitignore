@@ -1,1 +1,2 @@
-/build
+build/
+/src/debug/res/values/

@@ -8,37 +8,83 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="196dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="213dp"
-        android:onClick="showColorSelector"
+        android:layout_width="102dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="1dp"
+        android:onClick="changeColorClicked"
         android:text="@string/change_background_color_btn"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/canvas"
-        app:layout_constraintStart_toStartOf="@+id/canvas"
+        app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="196dp"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="58dp"
         android:onClick="aboutClicked"
         android:text="@string/about_btn"
         app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toEndOf="@+id/canvas"
-        app:layout_constraintStart_toStartOf="@+id/canvas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
-        android:id="@+id/canvas"
-        android:name="com.example.paint.fragment.CanvasFragment"
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="101dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="1dp"
+        android:onClick="changeFragmentClicked"
+        android:text="Change Fragment"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="597dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-93dp">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="102dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="2dp"
+        android:onClick="mapsClicked"
+        android:text="Maps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--<fragment
+        android:name="com.example.paint.fragments.CanvasFragment"
+        android:id="@+id/fragment_canvas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />-->
+
+    <!--<fragment
+        android:name="com.example.paint.fragments.PalletFragment"
+        android:id="@+id/fragment_pallet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
