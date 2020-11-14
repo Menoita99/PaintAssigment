@@ -49,7 +49,8 @@ public class DrawActivity extends FragmentActivity {
     public void setPaintColor(int color){
         canvasFragment.setPaintColor(color);
         history.add(color);
-        menuFragment.updateColorPalette(color);
+        if(menuFragment != null)
+            menuFragment.updateColorPalette(color);
     }
 
 

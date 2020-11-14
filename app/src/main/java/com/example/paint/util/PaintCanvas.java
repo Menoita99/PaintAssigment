@@ -15,7 +15,6 @@ import java.util.LinkedList;
 public class PaintCanvas extends View implements View.OnTouchListener{
 
     private int color = Color.BLACK;
-    private Path path = new Path();
     private LinkedList<Pair<Path,Paint>> drawing = new LinkedList<>();
     private int backGroundColor = Color.WHITE;
 
