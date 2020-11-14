@@ -8,11 +8,15 @@ import android.view.View;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.paint.fragment.CanvasFragment;
+import com.example.paint.util.LimitedList;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 public class DrawActivity extends FragmentActivity {
 
     private  CanvasFragment canvasFragment;
+
+    private int color = Color.WHITE;
+    private LimitedList<Integer> history = new LimitedList<Integer>(15);
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -22,11 +26,10 @@ public class DrawActivity extends FragmentActivity {
     }
 
 
-
-
     public void setBackgroundColor(int newColor) {
         canvasFragment.setBackgroundColor(newColor);
     }
+
 
 
 
@@ -43,5 +46,12 @@ public class DrawActivity extends FragmentActivity {
     public void aboutClicked(View v){
         Intent i = new Intent(this, AboutActivity.class);
         startActivity(i);
+    }
+
+
+
+
+    public LimitedList<Integer> getHistory(){
+        return history;
     }
 }

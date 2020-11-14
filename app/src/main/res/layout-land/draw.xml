@@ -39,12 +39,12 @@
 
     <fragment
         android:id="@+id/menu"
-        class="com.example.paint.fragment.MenuFragment"
         android:layout_width="138dp"
         android:layout_height="389dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/canvas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        class="com.example.paint.fragment.MenuFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,6 +45,10 @@ public class LimitedList<E> extends ArrayList<E> {
         return output;
     }
 
+    public E getOrDefault(int i, E dft){
+        return i<size() ? get(i) : dft;
+    }
+
 
     public boolean isFull() {
         return size() == maxSize;
