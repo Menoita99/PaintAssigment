@@ -2,34 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DrawActivity">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="196dp"
+        android:layout_width="223dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="213dp"
         android:onClick="showColorSelector"
         android:text="@string/change_background_color_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/canvas"
-        app:layout_constraintStart_toStartOf="@+id/canvas"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="196dp" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="196dp"
+        android:layout_width="186dp"
         android:layout_height="wrap_content"
         android:onClick="aboutClicked"
         android:text="@string/about_btn"
         app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toEndOf="@+id/canvas"
-        app:layout_constraintStart_toStartOf="@+id/canvas"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="196dp" />
 
     <fragment
         android:id="@+id/canvas"
@@ -38,7 +38,12 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_conversion_absoluteHeight="576dp"
+        tools:layout_conversion_absoluteWidth="370dp"
+        class="com.example.paint.fragment.CanvasFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

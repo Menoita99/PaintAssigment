@@ -12,7 +12,7 @@
         android:layout_height="66dp"
         android:onClick="showColorSelector"
         android:text="@string/change_background_color_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/pallet"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
         app:layout_constraintEnd_toStartOf="@+id/canvas"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -21,23 +21,25 @@
         android:id="@+id/button2"
         android:layout_width="134dp"
         android:layout_height="44dp"
+        android:layout_marginBottom="67dp"
         android:onClick="aboutClicked"
         android:text="@string/about_btn"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
         app:layout_constraintEnd_toStartOf="@+id/canvas"
-        app:layout_constraintStart_toStartOf="@+id/pallet" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/menu" />
 
     <fragment
         android:id="@+id/canvas"
-        android:name="com.example.paint.fragment.CanvasFragment"
         android:layout_width="546dp"
         android:layout_height="386dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        class="com.example.paint.fragment.CanvasFragment"/>
 
     <fragment
-        android:id="@+id/pallet"
-        android:name="com.example.paint.fragment.PalletFragment"
+        android:id="@+id/menu"
+        class="com.example.paint.fragment.MenuFragment"
         android:layout_width="138dp"
         android:layout_height="389dp"
         app:layout_constraintBottom_toBottomOf="parent"
