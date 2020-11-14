@@ -1,13 +1,18 @@
 package com.example.paint.fragment;
 
-import android.app.Activity;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.shapes.OvalShape;
+import android.graphics.drawable.shapes.Shape;
+import android.view.Gravity;
+import android.widget.LinearLayout;
+import  android.widget.TableRow.LayoutParams;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,47 +22,41 @@ import androidx.fragment.app.Fragment;
 import com.example.paint.DrawActivity;
 import com.example.paint.util.LimitedList;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class MenuFragment extends Fragment {
 
     private DrawActivity drawActivity;
-    private LimitedList<Integer> history;
-    private ArrayList<TextView> buttonList = new ArrayList<TextView>();
+    private ArrayList<TextView> buttonList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         drawActivity = ((DrawActivity)getActivity());
-
         return createColorPalette();
     }
 
 
     private View createColorPalette(){
-        TableLayout tableLayout = new TableLayout(getContext());
-        TableRow tableRow;
-        TextView button;
+        LinearLayout layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(25,0,0,0);
+        TableLayout tableLayout = new TableLayout(layout.getContext());
 
-        android.widget.TableRow.LayoutParams p = new android.widget.TableRow.LayoutParams();
-        p.rightMargin = 10;
-        p.bottomMargin = 10;
+        LayoutParams p = new LayoutParams();
+        p.rightMargin = 5;
+        p.bottomMargin = 5;
 
-
-        history = drawActivity.getHistory();
         int buttonNumber = 0;
         for (int i = 0; i < 5; i++) {
-            tableRow = new TableRow(getContext());
+            TableRow tableRow = new TableRow(getContext());
             for (int j = 0; j < 3; j++) {
-                button = new TextView(getContext());
+                TextView button = new TextView(getContext());
                 button.setPadding(20, 20, 20, 20);
-                tableRow.addView(button);
                 button.setLayoutParams(p);
                 button.setText("" + buttonNumber);
-
-                button.setBackgroundColor(history.getOrDefault(buttonNumber, Color.WHITE));
+                button.setBackgroundColor(getHistory().getOrDefault(buttonNumber, Color.WHITE));
+                button.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                tableRow.addView(button);
 
                 button.setOnTouchListener(new ChangeBackgroundColorListener(buttonNumber));
                 buttonNumber++;
@@ -67,36 +66,37 @@ public class MenuFragment extends Fragment {
 
         }
 
-        tableRow = new TableRow(getContext());
-        button = new TextView(getContext());
+        TextView button = new TextView(getContext());
         button.setPadding(20, 20, 20, 20);
-        tableRow.addView(button);
         button.setLayoutParams(p);
-        button.setText("C");
+        button.setText("Current color");
+        button.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         buttonList.add(button);
 
-        tableLayout.addView(tableRow);
+        layout.addView(tableLayout);
+        layout.addView(button);
 
-        return tableLayout;
+        return layout;
     }
 
     public void updateColorPalette(int color){
         for(TextView button : buttonList){
-            if(buttonList.indexOf(button) != 15) {
-                button.setBackgroundColor(history.getOrDefault(buttonList.indexOf(button), Color.WHITE));
-            } else{
+            if(buttonList.indexOf(button) != buttonList.size()-1)
+                button.setBackgroundColor(getHistory().getOrDefault(buttonList.indexOf(button), Color.WHITE));
+             else
                 button.setBackgroundColor(color);
-            }
         }
     }
 
 
 
+    private LimitedList<Integer> getHistory(){
+        return drawActivity.getHistory();
+    }
 
 
 
     private class ChangeBackgroundColorListener implements View.OnTouchListener {
-
         private int buttonId;
 
         public ChangeBackgroundColorListener(int buttonId){
@@ -105,12 +105,8 @@ public class MenuFragment extends Fragment {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-
-            drawActivity.getCanvasFragment().setPaintColor(history.getOrDefault(buttonId, Color.WHITE));
-
+            drawActivity.getCanvasFragment().setPaintColor(getHistory().getOrDefault(buttonId, Color.WHITE));
             return false;
         }
     }
-
-
 }
