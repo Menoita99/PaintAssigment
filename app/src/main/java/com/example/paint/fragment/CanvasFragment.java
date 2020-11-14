@@ -23,6 +23,7 @@ public class CanvasFragment extends Fragment {
 
     public void setBackgroundColor(int color){
         canvas.setBackgroundColor(color);
+
     }
 
 
