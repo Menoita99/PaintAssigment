@@ -6,33 +6,36 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.LinkedList;
+
 public class PaintCanvas extends View implements View.OnTouchListener{
 
-    private Paint paint = new Paint();
+    private int color = Color.BLACK;
     private Path path = new Path();
+    private LinkedList<Pair<Path,Paint>> drawing = new LinkedList<>();
     private int backGroundColor = Color.WHITE;
 
     public PaintCanvas(Context c){
         super(c);
         setOnTouchListener(this);
         setBackgroundColor(backGroundColor);
-        initPaint();
     }
 
     public PaintCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOnTouchListener(this);
         setBackgroundColor(backGroundColor);
-        initPaint();
+        color = Color.BLACK;
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawPath(path, paint);// draws the path with the paint
+        drawing.forEach(p -> canvas.drawPath(p.first,p.second));// draws the drawing
     }
 
     @Override
@@ -51,10 +54,13 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         float eventY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                Path path = new Path();
+                Pair<Path,Paint> line = new Pair<>(path, createPaint());
+                drawing.add(line);
                 path.moveTo(eventX, eventY);// updates the path initial point
                 return true;
             case MotionEvent.ACTION_MOVE:
-                path.lineTo(eventX, eventY);// makes a line to the point each time this event is fired
+                drawing.getLast().first.lineTo(eventX, eventY);// makes a line to the point each time this event is fired
                 break;
             case MotionEvent.ACTION_UP:// when you lift your finger
                 performClick();
@@ -69,25 +75,27 @@ public class PaintCanvas extends View implements View.OnTouchListener{
     }
 
     public void erase(){
-        path = new Path();
+        drawing.clear();
         invalidate();
     }
 
-    public Path getPath(){
-        return path;
+    public int getPaintColor(){
+        return color;
     }
 
-    public Paint getPaint(){
-        return paint;
+    public void setPaintColor(int color){
+        this.color = color;
     }
 
 
 
-    private void initPaint(){
+    private Paint createPaint(){
+        Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStrokeWidth(20f);
-        paint.setColor(Color.BLACK);
+        paint.setColor(color);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
+        return paint;
     }
 }

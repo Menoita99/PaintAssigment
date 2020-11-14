@@ -34,7 +34,7 @@ public class DrawActivity extends FragmentActivity {
 
 
     public void showColorSelector(View v){
-        int color = canvasFragment.getCanvas().getPaint().getColor();
+        int color = canvasFragment.getCanvas().getPaintColor();
         final ColorPicker cp = new ColorPicker(this, Color.red(color), Color.green(color), Color.blue(color));
         cp.enableAutoClose();
         cp.setCallback(canvasFragment::setPaintColor);

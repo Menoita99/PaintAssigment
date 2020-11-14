@@ -27,8 +27,10 @@ public class CanvasFragment extends Fragment {
 
 
     public void setPaintColor(int newColor){
-        canvas.getPaint().setColor(newColor);
+        canvas.setPaintColor(newColor);
     }
+
+
 
     public void erase(){
         canvas.erase();
