@@ -9,12 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.paint.util.LimitedList;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 public class DrawActivity extends FragmentActivity {
 
 
     private int color = Color.WHITE;
+    private LimitedList<Integer> history = new LimitedList<Integer>(15);
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -23,14 +25,14 @@ public class DrawActivity extends FragmentActivity {
     }
 
 
-
-
     public void setBackgroundColor(int newColor) {
         color = newColor;
         View rootView = findViewById(R.id.canvas);
         rootView.setBackgroundColor(color);
-  //      pallet.addColorToPallet(newColor);
+        history.add(newColor);
+
     }
+
 
 
 
@@ -49,4 +51,9 @@ public class DrawActivity extends FragmentActivity {
     }
 
 
+
+
+    public LimitedList<Integer> getHistory(){
+        return history;
+    }
 }
