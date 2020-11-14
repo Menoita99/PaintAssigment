@@ -8,14 +8,34 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.paint.R;
+import com.example.paint.util.PaintCanvas;
 
 public class CanvasFragment extends Fragment {
 
+    private PaintCanvas canvas;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.canvas_layout, container, false);
-        return view;
+        canvas = new PaintCanvas(getContext());
+        return canvas;
+    }
+
+
+    public void setBackgroundColor(int color){
+        canvas.setBackgroundColor(color);
+    }
+
+
+    public void setPaintColor(int newColor){
+        canvas.getPaint().setColor(newColor);
+    }
+
+    public void erase(){
+        canvas.erase();
+    }
+
+
+    public PaintCanvas getCanvas(){
+        return canvas;
     }
 }

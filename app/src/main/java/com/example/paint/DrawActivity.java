@@ -5,39 +5,36 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 
+import com.example.paint.fragment.CanvasFragment;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 public class DrawActivity extends FragmentActivity {
 
-
-    private int color = Color.WHITE;
+    private  CanvasFragment canvasFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.draw);
+        canvasFragment = (CanvasFragment) getSupportFragmentManager().findFragmentById(R.id.canvas);
     }
 
 
 
 
     public void setBackgroundColor(int newColor) {
-        color = newColor;
-        View rootView = findViewById(R.id.canvas);
-        rootView.setBackgroundColor(color);
-  //      pallet.addColorToPallet(newColor);
+        canvasFragment.setBackgroundColor(newColor);
     }
 
 
 
     public void showColorSelector(View v){
+        int color = canvasFragment.getCanvas().getPaint().getColor();
         final ColorPicker cp = new ColorPicker(this, Color.red(color), Color.green(color), Color.blue(color));
         cp.enableAutoClose();
-        cp.setCallback(this::setBackgroundColor);
+        cp.setCallback(canvasFragment::setPaintColor);
         cp.show();
     }
 
@@ -47,6 +44,4 @@ public class DrawActivity extends FragmentActivity {
         Intent i = new Intent(this, AboutActivity.class);
         startActivity(i);
     }
-
-
 }
