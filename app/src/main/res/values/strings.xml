@@ -26,4 +26,8 @@
     <string name="startDraw">Start Drawing</string>
     <string name="stopDraw">Stop Drawing</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         new Handler().postDelayed(() -> {
-                Intent i = new Intent(MainActivity.this, DrawActivity.class);
+                Intent i = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(i);
                 MainActivity.this.finish();
             },TIME_TO_WELCOME);
