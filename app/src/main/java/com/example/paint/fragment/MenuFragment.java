@@ -1,9 +1,5 @@
 package com.example.paint.fragment;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.shapes.OvalShape;
-import android.graphics.drawable.shapes.Shape;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import  android.widget.TableRow.LayoutParams;
@@ -19,7 +15,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.paint.DrawActivity;
+import com.example.paint.activity.DrawActivity;
 import com.example.paint.util.LimitedList;
 
 import java.util.ArrayList;
@@ -53,9 +49,9 @@ public class MenuFragment extends Fragment {
                 TextView button = new TextView(getContext());
                 button.setPadding(20, 20, 20, 20);
                 button.setLayoutParams(p);
-                button.setText("" + buttonNumber);
+                //button.setText("" + buttonNumber);
+                button.setText("     ");
                 button.setBackgroundColor(getHistory().getOrDefault(buttonNumber, Color.WHITE));
-                button.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                 tableRow.addView(button);
 
                 button.setOnTouchListener(new ChangeBackgroundColorListener(buttonNumber));
@@ -67,11 +63,10 @@ public class MenuFragment extends Fragment {
         }
 
         TextView button = new TextView(getContext());
-        button.setPadding(20, 20, 20, 20);
-        button.setLayoutParams(p);
-        button.setText("Current color");
+        button.setText("color");
         button.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         buttonList.add(button);
+        button.setBackgroundColor(Color.BLACK);
 
         layout.addView(tableLayout);
         layout.addView(button);
@@ -106,8 +101,8 @@ public class MenuFragment extends Fragment {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             drawActivity.getCanvasFragment().setPaintColor(getHistory().getOrDefault(buttonId, Color.WHITE));
-            TextView aux = buttonList.get(buttonList.size() - 1);
-            aux.setBackgroundColor(getHistory().getOrDefault(buttonId, Color.WHITE));
+            buttonList.get(buttonList.size()-1).setBackgroundColor(getHistory().getOrDefault(buttonId, Color.WHITE));
+
             return false;
         }
     }

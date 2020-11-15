@@ -1,8 +1,10 @@
-package com.example.paint;
+package com.example.paint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.paint.R;
 
 public class AboutActivity extends AppCompatActivity {
 
