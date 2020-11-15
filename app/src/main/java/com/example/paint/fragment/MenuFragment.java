@@ -49,9 +49,9 @@ public class MenuFragment extends Fragment {
                 TextView button = new TextView(getContext());
                 button.setPadding(20, 20, 20, 20);
                 button.setLayoutParams(p);
-                button.setText("" + buttonNumber);
+                //button.setText("" + buttonNumber);
+                button.setText("     ");
                 button.setBackgroundColor(getHistory().getOrDefault(buttonNumber, Color.WHITE));
-                button.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                 tableRow.addView(button);
 
                 button.setOnTouchListener(new ChangeBackgroundColorListener(buttonNumber));
@@ -63,11 +63,10 @@ public class MenuFragment extends Fragment {
         }
 
         TextView button = new TextView(getContext());
-        button.setPadding(20, 20, 20, 20);
-        button.setLayoutParams(p);
-        button.setText("Current color");
+        button.setText("color");
         button.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         buttonList.add(button);
+        button.setBackgroundColor(Color.BLACK);
 
         layout.addView(tableLayout);
         layout.addView(button);

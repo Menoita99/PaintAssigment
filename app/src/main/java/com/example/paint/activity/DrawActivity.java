@@ -27,6 +27,7 @@ public class DrawActivity extends FragmentActivity {
         setContentView(R.layout.draw);
         canvasFragment = (CanvasFragment) getSupportFragmentManager().findFragmentById(R.id.canvas);
         menuFragment = (MenuFragment) getSupportFragmentManager().findFragmentById(R.id.menu);
+        history.add(canvasFragment.getCanvas().getPaintColor());
     }
 
 
