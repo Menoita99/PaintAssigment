@@ -106,6 +106,8 @@ public class MenuFragment extends Fragment {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             drawActivity.getCanvasFragment().setPaintColor(getHistory().getOrDefault(buttonId, Color.WHITE));
+            TextView aux = buttonList.get(buttonList.size() - 1);
+            aux.setBackgroundColor(getHistory().getOrDefault(buttonId, Color.WHITE));
             return false;
         }
     }
