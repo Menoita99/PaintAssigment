@@ -1,9 +1,5 @@
 package com.example.paint.fragment;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.shapes.OvalShape;
-import android.graphics.drawable.shapes.Shape;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import  android.widget.TableRow.LayoutParams;
@@ -19,7 +15,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.paint.DrawActivity;
+import com.example.paint.activity.DrawActivity;
 import com.example.paint.util.LimitedList;
 
 import java.util.ArrayList;

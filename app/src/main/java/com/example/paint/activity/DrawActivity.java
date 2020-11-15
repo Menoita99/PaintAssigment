@@ -1,14 +1,13 @@
-package com.example.paint;
+package com.example.paint.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.paint.R;
 import com.example.paint.fragment.CanvasFragment;
 import com.example.paint.fragment.MenuFragment;
 import com.example.paint.util.LimitedList;
@@ -35,7 +34,32 @@ public class DrawActivity extends FragmentActivity {
         canvasFragment.setBackgroundColor(newColor);
     }
 
+    public CanvasFragment getCanvasFragment(){
+        return canvasFragment;
+    }
 
+    public LimitedList<Integer> getHistory(){
+        return history;
+    }
+
+    public void setPaintColor(int color){
+        canvasFragment.setPaintColor(color);
+        history.add(color);
+        if(menuFragment != null)
+            menuFragment.updateColorPalette(color);
+    }
+
+    public void undo(View v){
+        canvasFragment.getCanvas().undo();
+    }
+
+    public void redo(View v){
+        canvasFragment.getCanvas().redo();
+    }
+
+    public void erase(View v){
+        canvasFragment.erase();
+    }
 
 
     public void showColorSelector(View v){
@@ -46,14 +70,6 @@ public class DrawActivity extends FragmentActivity {
         cp.show();
     }
 
-    public void setPaintColor(int color){
-        canvasFragment.setPaintColor(color);
-        history.add(color);
-        if(menuFragment != null)
-            menuFragment.updateColorPalette(color);
-    }
-
-
 
     public void aboutClicked(View v){
         Intent i = new Intent(this, AboutActivity.class);
@@ -61,11 +77,8 @@ public class DrawActivity extends FragmentActivity {
     }
 
 
-    public CanvasFragment getCanvasFragment(){
-        return canvasFragment;
-    }
-
-    public LimitedList<Integer> getHistory(){
-        return history;
+    public void mapsClicked(View v){
+        Intent i = new Intent(this, MapsActivity.class);
+        startActivity(i);
     }
 }

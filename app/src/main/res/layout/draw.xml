@@ -5,45 +5,61 @@
     android:id="@+id/draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DrawActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="223dp"
-        android:layout_height="wrap_content"
-        android:onClick="showColorSelector"
-        android:text="@string/change_background_color_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="196dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="186dp"
-        android:layout_height="wrap_content"
-        android:onClick="aboutClicked"
-        android:text="@string/about_btn"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="196dp" />
+    tools:context=".activity.DrawActivity">
 
     <fragment
         android:id="@+id/canvas"
         android:name="com.example.paint.fragment.CanvasFragment"
+        class="com.example.paint.fragment.CanvasFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_conversion_absoluteHeight="576dp"
-        tools:layout_conversion_absoluteWidth="370dp"
-        class="com.example.paint.fragment.CanvasFragment"/>
+        tools:layout_conversion_absoluteWidth="370dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/canvas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mapsClicked"
+            android:src="@android:drawable/ic_menu_mapmode" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:onClick="aboutClicked"
+            android:text="@string/about_btn"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="196dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showColorSelector"
+            android:src="@android:drawable/ic_menu_edit" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

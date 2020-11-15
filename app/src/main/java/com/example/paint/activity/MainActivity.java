@@ -1,10 +1,12 @@
-package com.example.paint;
+package com.example.paint.activity;
 
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.paint.R;
 
 public class MainActivity extends Activity {
 

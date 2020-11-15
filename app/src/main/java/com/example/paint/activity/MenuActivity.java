@@ -1,4 +1,4 @@
-package com.example.paint;
+package com.example.paint.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

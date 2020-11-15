@@ -18,6 +18,8 @@ public class PaintCanvas extends View implements View.OnTouchListener{
     private LinkedList<Pair<Path,Paint>> drawing = new LinkedList<>();
     private int backGroundColor = Color.WHITE;
 
+    private LinkedList<Pair<Path,Paint>> redo = new LinkedList<>();
+
     public PaintCanvas(Context c){
         super(c);
         setOnTouchListener(this);
@@ -53,6 +55,7 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         float eventY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                redo.clear();
                 Path path = new Path();
                 Pair<Path,Paint> line = new Pair<>(path, createPaint());
                 drawing.add(line);
@@ -86,6 +89,20 @@ public class PaintCanvas extends View implements View.OnTouchListener{
         this.color = color;
     }
 
+
+    public void undo(){
+        Pair<Path, Paint> poll = drawing.pollLast();
+        if(poll != null)
+            redo.add(poll);
+        invalidate();
+    }
+
+    public void redo(){
+        Pair<Path, Paint> poll = redo.pollLast();
+        if(poll != null)
+            drawing.add(poll);
+        invalidate();
+    }
 
 
     private Paint createPaint(){

@@ -20,7 +20,10 @@
 
     <!-- draw view -->
     <string name="change_background_color_btn">Change color</string>
-    <string name="about_btn">About</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_btn">About us</string>
+
+
+    <string name="startDraw">Start Drawing</string>
+    <string name="stopDraw">Stop Drawing</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
