@@ -5,6 +5,7 @@
     android:id="@+id/draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="saveDrawing"
     tools:context=".activity.DrawActivity">
 
     <fragment
@@ -15,7 +16,7 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -23,8 +24,8 @@
         tools:layout_conversion_absoluteWidth="370dp" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="49dp"
+        android:layout_width="375dp"
+        android:layout_height="61dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="horizontal"
@@ -35,13 +36,6 @@
         app:layout_constraintStart_toEndOf="@+id/canvas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="mapsClicked"
-            android:src="@android:drawable/ic_menu_mapmode" />
 
         <Button
             android:id="@+id/button2"
@@ -55,11 +49,39 @@
             tools:layout_conversion_absoluteWidth="196dp" />
 
         <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="saveDrawing"
+            android:src="@android:drawable/ic_menu_save" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="51dp"
+            android:onClick="getDrawing"
+            android:src="@android:drawable/stat_sys_download" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mapsClicked"
+            android:src="@android:drawable/ic_menu_mapmode" />
+
+        <ImageButton
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="showColorSelector"
             android:src="@android:drawable/ic_menu_edit" />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_myplaces" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
