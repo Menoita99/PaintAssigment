@@ -33,6 +33,7 @@
         <activity android:name=".activity.AboutActivity"></activity>
         <activity android:name=".activity.DrawActivity" />
         <activity android:name=".activity.SignInActivity" />
+        <activity android:name=".activity.SharedCanvasActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

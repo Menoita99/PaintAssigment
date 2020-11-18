@@ -22,10 +22,12 @@ public class SharedCanvasActivity extends AppCompatActivity {
     private PaintCanvas canvas;
     private DatabaseReference sharedDrawingDB;
     private DatabaseReference sharedCanvas;
+    private String userId;
 
     @Override
     public void onCreate( Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
+        userId = getIntent().getStringExtra("userId");
         canvas = new PaintCanvas(getApplicationContext());
         sharedDrawingDB= FirebaseDatabase.getInstance().getReference().child("SharedDrawing");
         sharedDrawingDB.addValueEventListener(changeListener());
@@ -36,24 +38,27 @@ public class SharedCanvasActivity extends AppCompatActivity {
 
     private PaintCanvas.DrawingListener getDrawingListener() {
         return new PaintCanvas.DrawingListener() {
+            private int lineId = 0;
+
             @Override
             public void onAdd(Pair<Path, Paint> line) {
-                sharedCanvas.setValue(new LineModel(line));
+                lineId++;
+                sharedCanvas.child(userId+lineId).setValue(new LineModel(line));
             }
 
             @Override
             public void onChange(Pair<Path, Paint> line) {
-
+                sharedCanvas.child(userId+lineId).setValue(new LineModel(line));
             }
 
             @Override
             public void onRemove(Pair<Path, Paint> line) {
-
+                sharedCanvas.child(userId+lineId).removeValue();
             }
 
             @Override
             public void onErase() {
-
+                sharedCanvas.removeValue();
             }
         };
     }

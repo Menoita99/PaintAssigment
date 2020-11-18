@@ -91,13 +91,6 @@ public class DrawActivity extends FragmentActivity {
         Toast.makeText(getApplicationContext(),"Drawn saved",  Toast.LENGTH_SHORT).show();
     }
 
-
-
-    public void getDrawing(View v){
-    }
-
-
-
     public void setPaintColor(int color){
         canvasFragment.setPaintColor(color);
         history.add(color);
@@ -125,6 +118,12 @@ public class DrawActivity extends FragmentActivity {
         startActivity(i);
     }
 
+    public void sharedCanvasCliked(View v){
+        Intent i = new Intent(this, SharedCanvasActivity.class);
+        i.putExtra("userId",user.getUid());
+        startActivity(i);
+    }
+
 
     private void checkSignedUser() {
         // Initialize Firebase Auth
@@ -134,6 +133,7 @@ public class DrawActivity extends FragmentActivity {
             finish();
         }
     }
+
     private void setupSensor(){
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
@@ -168,8 +168,6 @@ public class DrawActivity extends FragmentActivity {
     public boolean getIsAccelerometerAvailable(){
         return isAccelerometerAvailable;
     }
-    public boolean getIsLightSensorAvailable(){
 
-        return isLightSensorAvailable;
-    }
+    public boolean getIsLightSensorAvailable() { return isLightSensorAvailable; }
 }

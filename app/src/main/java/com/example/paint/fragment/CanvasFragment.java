@@ -88,7 +88,7 @@ public class CanvasFragment extends Fragment implements SensorEventListener {
 
         if (event.sensor.getType() == Sensor.TYPE_LIGHT){
             WindowManager.LayoutParams layoutParams = drawActivity.getWindow().getAttributes(); // Get Params
-            layoutParams.screenBrightness = event.values[0]/40000; // Set Value
+            layoutParams.screenBrightness = Math.max(15000,event.values[0]/40000); // Set Value
             drawActivity.getWindow().setAttributes(layoutParams); // Set params
         }
     }
